@@ -173,14 +173,14 @@ module Ohai
     # Serialize this object as a hash
     #
     def to_json
-      Yajl::Encoder.new.encode(@data)
+      FFI_Yajl::Encoder.new.encode(@data)
     end
 
     #
     # Pretty Print this object as JSON
     #
     def json_pretty_print(item=nil)
-      Yajl::Encoder.new(:pretty => true).encode(item || @data)
+      FFI_Yajl::Encoder.new(:pretty => true).encode(item || @data)
     end
 
     def attributes_print(a)

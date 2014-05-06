@@ -102,7 +102,7 @@ Ohai.plugin(:Rackspace) do
       so.stdout.split("\n").map{|l| l.split('=').first.strip }.map do |item|
         _so = shell_out("xenstore-read vm-data/networking/#{item}")
         if _so.exitstatus == 0
-          networks.push(Yajl::Parser.new.parse(_so.stdout))
+          networks.push(FFI_Yajl::Parser.new.parse(_so.stdout))
         else
           raise Ohai::Exceptions::Exec
         end
